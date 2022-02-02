@@ -1,0 +1,12 @@
+.filme-container {
+  width: 185px;
+  margin: 10px;
+}
+.filme-container img {
+  border-radius: 5px;
+  height: 275px;
+}
+
+.filme-container h2 {
+  font-size: 15px;
+}

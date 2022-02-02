@@ -1,0 +1,20 @@
+.categorias-container {
+  background-color: #2d0c5e;
+}
+.categoria-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 15%;
+  padding-bottom: 85px;
+}
+.categorias-container h1 {
+  color: #fff;
+  font-family: 48px;
+  text-align: center;
+  padding: 100px 0 50px;
+}
+.categorias-container p {
+  text-align: center;
+  color: #fff;
+}

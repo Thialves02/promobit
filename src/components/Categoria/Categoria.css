@@ -1,0 +1,10 @@
+.categoria-container button {
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 12px;
+}
