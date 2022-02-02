@@ -5,12 +5,15 @@ import "./Categorias.css";
 
 export default function Categorias() {
   const [categorias, setCategorias] = useState([]);
-
+  const API_KEY = "83a924a233a6fae4e8bb3ece72e1dcd0";
   useEffect(() => {
     const load = async () => {
-      let list = await Api.getCategorias();
-      setCategorias(list);
-      console.log(list);
+      const response = await fetch(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=pt-BR`
+      );
+      const body = await response.json();
+      setCategorias(body.genres);
+      console.log(body.genres);
     };
     load();
   }, []);
@@ -24,7 +27,7 @@ export default function Categorias() {
       <p>FILTRE POR:</p>
       <div className="categoria-container">
         {categorias.map((categoria, index) => (
-          <Categoria index={index} categoria={categoria.title} />
+          <Categoria index={index} categoria={categoria.name} />
         ))}
       </div>
     </div>
