@@ -1,13 +1,32 @@
 .paginacao-container {
   display: flex;
   justify-content: center;
-  width: 250px;
+  width: 280px;
   margin: 75px auto 100px;
 }
+.paginacao-container__paginas {
+  display: flex;
+  overflow: hidden;
+  width: 150px;
+}
 
+.teste {
+  display: flex;
+  width: 200px;
+}
 .paginacao-container p {
   color: #5c16c5;
   margin: 0 10px;
   font-weight: bold;
   cursor: pointer;
+}
+
+.previus-page__none,
+.next-page__none {
+  display: none;
+}
+
+.previus-page,
+.next-page {
+  display: block;
 }
