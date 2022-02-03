@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Api from "../../api/Api";
 import Categoria from "../Categoria/Categoria";
 import "./Categorias.css";
 
@@ -13,7 +12,6 @@ export default function Categorias() {
       );
       const body = await response.json();
       setCategorias(body.genres);
-      console.log(body.genres);
     };
     load();
   }, []);
@@ -27,7 +25,11 @@ export default function Categorias() {
       <p>FILTRE POR:</p>
       <div className="categoria-container">
         {categorias.map((categoria, index) => (
-          <Categoria index={index} categoria={categoria.name} />
+          <Categoria
+            index={index}
+            categoria={categoria.name}
+            id={categoria.id}
+          />
         ))}
       </div>
     </div>
