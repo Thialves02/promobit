@@ -1,6 +1,6 @@
 import React from "react";
 import "./Filme.css";
-import { parseISO, format, formatRelative, formatDistance } from "date-fns";
+import { parseISO, format } from "date-fns";
 
 import ptBR from "date-fns/locale/pt-BR";
 
