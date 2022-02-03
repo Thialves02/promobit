@@ -1,5 +1,15 @@
-.categoria-container button {
-  background-color: #fff;
+.categoria-container,
+.categoria-container__active {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 15%;
+  padding-bottom: 85px;
+}
+.categoria-button button,
+.categoria-button__active button {
+  display: flex;
+  align-items: center;
   border: none;
   border-radius: 5px;
   height: 40px;
@@ -7,4 +17,20 @@
   cursor: pointer;
   font-weight: bold;
   margin: 12px;
+}
+.categoria-button button {
+  background-color: #fff;
+}
+.categoria-button__active button {
+  background-color: #d18000;
+  color: #fff;
+}
+
+.categoria-button .categoria-button__icon {
+  display: none;
+}
+
+.categoria-button__active .categoria-button__icon {
+  display: block;
+  margin-left: 10px;
 }
