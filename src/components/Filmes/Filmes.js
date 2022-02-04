@@ -13,19 +13,21 @@ export default function Filmes() {
         `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=${pagina}`
       );
       const body = await response.json();
-      setFilmes(body.results);
+      setFilmes(body);
     };
     load();
   }, [pagina]);
+
   return (
     <div className="filmes-container">
-      {filmes &&
-        filmes.map((filme, index) => (
+      {filmes.results !== undefined &&
+        filmes.results.map((filme, index) => (
           <Filme
             key={index}
             imagem={filme.poster_path}
             titulo={filme.title}
             data={filme.release_date}
+            id={filme.id}
           />
         ))}
     </div>
