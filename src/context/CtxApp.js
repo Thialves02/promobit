@@ -10,6 +10,7 @@ export default function CtxApp({ children }) {
   const [filme, setFilme] = useState([]);
   const [certificationAPI, setCertificationAPI] = useState([]);
   const [credits, setCredits] = useState([]);
+  const [trailer, setTrailer] = useState([]);
 
   const [a, aA] = useState([]);
   return (
@@ -29,6 +30,8 @@ export default function CtxApp({ children }) {
         setCertificationAPI,
         credits,
         setCredits,
+        trailer,
+        setTrailer,
       }}
     >
       {children}
