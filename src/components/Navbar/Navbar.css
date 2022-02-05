@@ -4,16 +4,21 @@
   height: 56px;
   background-color: #5c16c5;
 }
-.navbar-container img {
+.navbar-container a img {
   height: 40%;
   margin-left: 70px;
+  width: 50%;
 }
 
 @media only screen and (max-width: 600px) {
   .navbar-container {
     justify-content: center;
   }
-  .navbar-container img {
+  .navbar-container a img {
     margin-left: 0;
+  }
+  .navbar-container a {
+    display: flex;
+    justify-content: center;
   }
 }
