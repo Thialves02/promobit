@@ -1,0 +1,21 @@
+.recomendacoes-container {
+  background-color: #dddd;
+  padding: 0 75px 100px;
+  text-decoration: none;
+}
+
+.recomendacoes-container h1 {
+  font-size: 28px;
+  color: #131313;
+  margin-bottom: 15px;
+}
+
+.recomendacoes {
+  text-decoration: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recomendacoes a {
+  text-decoration: none;
+}
