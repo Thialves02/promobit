@@ -4,3 +4,13 @@
   justify-content: space-between;
   margin: 30px 70px;
 }
+
+.filmes-container a {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .filmes-container {
+    justify-content: center;
+  }
+}
