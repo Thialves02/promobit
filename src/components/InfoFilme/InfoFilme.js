@@ -20,10 +20,9 @@ export default function InfoFilme() {
       }
     };
     if (credits.length != 0) {
-      const b = credits.crew;
-      console.log(b);
-      const a = b.slice(0, 6);
-      setCrew(a);
+      const creditsArray = credits.crew;
+      const newCredits = creditsArray.slice(0, 6);
+      setCrew(newCredits);
     }
     voteAverage();
   }, [filme.vote_average, credits]);
