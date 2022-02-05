@@ -7,7 +7,6 @@ export default function Paginacao() {
   const [margin, setMargin] = useState(0);
   const [paginas, setPaginas] = useState(1);
 
-  console.log(filmes);
   const pages = [
     { page: 1 },
     { page: 2 },
@@ -61,7 +60,7 @@ export default function Paginacao() {
         {"<"}
       </p>
       <div className="paginacao-container__paginas">
-        <div className="teste" style={{ marginLeft: margin }}>
+        <div className="paginas-container" style={{ marginLeft: margin }}>
           {pages.map((page, index) => (
             <p onClick={() => newPage(index + 1)}>{page.page}</p>
           ))}
