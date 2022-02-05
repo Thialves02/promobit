@@ -9,6 +9,8 @@ export default function CtxApp({ children }) {
   const [filmesFiltrados, setFilmesFiltrados] = useState([]);
   const [filme, setFilme] = useState([]);
   const [certificationAPI, setCertificationAPI] = useState([]);
+  const [credits, setCredits] = useState([]);
+
   const [a, aA] = useState([]);
   return (
     <Context.Provider
@@ -25,6 +27,8 @@ export default function CtxApp({ children }) {
         setFilme,
         certificationAPI,
         setCertificationAPI,
+        credits,
+        setCredits,
       }}
     >
       {children}
