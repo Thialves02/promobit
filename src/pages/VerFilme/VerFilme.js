@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./VerFilme.css";
 import { Context } from "../../context/CtxApp";
 import InfoFilme from "../../components/InfoFilme/InfoFilme";
+import Elenco from "../../components/Elenco/Elenco";
 
 export default function VerFilme(props) {
   const { setFilme, setCertificationAPI, credits, setCredits } =
@@ -36,6 +37,7 @@ export default function VerFilme(props) {
   return (
     <>
       <InfoFilme />
+      <Elenco />
     </>
   );
 }
