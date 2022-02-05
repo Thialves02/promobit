@@ -1,13 +1,7 @@
 .categorias-container {
   background-color: #2d0c5e;
 }
-.categoria-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 0 15%;
-  padding-bottom: 85px;
-}
+
 .categorias-container h1 {
   color: #fff;
   font-family: 48px;
@@ -17,4 +11,16 @@
 .categorias-container p {
   text-align: center;
   color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .categorias-container h1 {
+    text-align: left;
+    margin: 0 40px;
+    font-family: 24px;
+  }
+  .categoria-container {
+    justify-content: start;
+    margin: 0 3%;
+  }
 }
