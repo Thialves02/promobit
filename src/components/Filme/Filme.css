@@ -1,3 +1,7 @@
+a .filme-container {
+  text-decoration: none;
+}
+
 .filme-container {
   width: 185px;
   margin: 10px;
@@ -11,6 +15,7 @@
 .filme-container h2 {
   font-size: 16px;
   margin: 5px 0;
+  color: black;
 }
 
 .filme-container h3 {
