@@ -4,13 +4,18 @@
   width: 280px;
   margin: 75px auto 100px;
 }
+
+.paginacao-container__hidden {
+  display: none;
+}
+
 .paginacao-container__paginas {
   display: flex;
   overflow: hidden;
   width: 150px;
 }
 
-.teste {
+.paginas-container {
   display: flex;
   width: 200px;
 }
