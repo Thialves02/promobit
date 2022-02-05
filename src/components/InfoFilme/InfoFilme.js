@@ -10,7 +10,7 @@ export default function InfoFilme() {
   const [etaria, setEtaria] = useState();
   const [nota, setNota] = useState();
   const [crew, setCrew] = useState(undefined);
-
+  console.log(certificationAPI);
   useEffect(() => {
     const voteAverage = () => {
       if (filme.vote_average != undefined) {
@@ -24,27 +24,23 @@ export default function InfoFilme() {
       const newCredits = creditsArray.slice(0, 6);
       setCrew(newCredits);
     }
+    if (certificationAPI != undefined) {
+      certificationAPI.map((a, index) => {
+        if (a.iso_3166_1 === "BR") {
+          const firstDate = parseISO(a.release_dates[0].release_date);
+          const firstEtaria = a.release_dates[0].certification;
+          const formattedDate = format(firstDate, "' 'dd'/'MM'/'yyyy' '", {
+            locale: ptBR,
+          });
+          setDataFormatada(formattedDate);
+          setEtaria(firstEtaria);
+        }
+      });
+    }
     voteAverage();
-  }, [filme.vote_average, credits]);
+  }, [filme.vote_average, credits, certificationAPI]);
 
   const calcNota = 157 - (157 * nota) / 100;
-  const formatarData = () => {
-    certificationAPI.map((a, index) => {
-      if (a.iso_3166_1 === "BR") {
-        const firstDate = parseISO(a.release_dates[0].release_date);
-        const firstEtaria = a.release_dates[0].certification;
-        const formattedDate = format(firstDate, "' 'dd'/'MM'/'yyyy' '", {
-          locale: ptBR,
-        });
-        setDataFormatada(formattedDate);
-        setEtaria(firstEtaria);
-      }
-    });
-  };
-
-  if (dataFormatada === undefined) {
-    formatarData();
-  }
 
   var time = filme.runtime;
   var minutes = Math.floor(time / 60);
@@ -57,6 +53,7 @@ export default function InfoFilme() {
 
   const finalTime =
     str_pad_left(minutes, "0", 2) + "h " + str_pad_left(seconds, "0", 2) + "m";
+
   return (
     <div>
       <div className="VerFilme-container">
