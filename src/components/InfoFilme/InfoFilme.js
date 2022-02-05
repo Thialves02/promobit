@@ -3,22 +3,30 @@ import "./InfoFilme.css";
 import { parseISO, format } from "date-fns";
 import ptBR from "date-fns/locale/pt-BR";
 import { Context } from "../../context/CtxApp";
+
 export default function InfoFilme() {
-  const { filme, setFilme, certificationAPI, setCertificationAPI } =
-    useContext(Context);
+  const { filme, certificationAPI, credits } = useContext(Context);
   const [dataFormatada, setDataFormatada] = useState();
   const [etaria, setEtaria] = useState();
   const [nota, setNota] = useState();
+  const [crew, setCrew] = useState(undefined);
+
   useEffect(() => {
-    const a = () => {
+    const voteAverage = () => {
       if (filme.vote_average != undefined) {
         const getVote = String(filme.vote_average);
         const formatVote = getVote.replace(/[.]/g, "");
         setNota(formatVote);
       }
     };
-    a();
-  }, [filme.vote_average]);
+    if (credits.length != 0) {
+      const b = credits.crew;
+      console.log(b);
+      const a = b.slice(0, 6);
+      setCrew(a);
+    }
+    voteAverage();
+  }, [filme.vote_average, credits]);
 
   const calcNota = 157 - (157 * nota) / 100;
   const formatarData = () => {
@@ -72,29 +80,40 @@ export default function InfoFilme() {
               <span>•</span>
               <p>{finalTime}</p>
             </div>
-            <div className="box">
-              <div className="box-circle">
-                <svg>
-                  <circle cx="25" cy="25" r="25"></circle>
-                  <circle
-                    cx="25"
-                    cy="25"
-                    r="25"
-                    style={{
-                      strokeDashoffset: calcNota,
-                      stroke: "#14ff00",
-                    }}
-                  ></circle>
-                </svg>
+            <div className="box-container">
+              <div className="box">
+                <div className="box-circle">
+                  <svg>
+                    <circle cx="25" cy="25" r="25"></circle>
+                    <circle
+                      cx="25"
+                      cy="25"
+                      r="25"
+                      style={{
+                        strokeDashoffset: calcNota,
+                        stroke: "#14ff00",
+                      }}
+                    ></circle>
+                  </svg>
+                </div>
+                <div className="number">
+                  <h2>{nota}%</h2>
+                </div>
               </div>
-              <div className="number">
-                <h2>{nota}%</h2>
-                {/* <h2>{nota != undefined && nota}%</h2> */}
-              </div>
+              <div className="box-info">Avaliação dos usuários</div>
             </div>
             <div className="description__sinopse">
               <h2>Sinopse</h2>
               <p>{filme.overview}</p>
+            </div>
+            <div className="description__crew">
+              {crew &&
+                crew.map((person, index) => (
+                  <div className="description__crew-person">
+                    <h2>{person.name}</h2>
+                    <p>{person.job}</p>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
