@@ -1,6 +1,6 @@
 .VerFilme-container__infos {
   display: flex;
-  height: 600px;
+  height: 500px;
   background-color: #2d0c5e;
   color: #fff;
   padding: 50px 0 0 70px;
@@ -8,7 +8,10 @@
 
 .VerFilme-container__infos img {
   width: 380px;
-  height: 575px;
+  height: 550px;
+  border-radius: 10px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 8px;
 }
 
 .VerFilme-description {
@@ -23,7 +26,7 @@
 .description__infos p {
   margin: 0 5px;
 }
-/* ADICIONAR BOLINHA COM AFTER E RETIRAR SPAN */
+
 .description__types {
   display: flex;
 }
@@ -41,11 +44,20 @@
   margin-left: 0;
 }
 
+.box-container {
+  display: flex;
+  align-items: center;
+}
 .box {
+  display: flex;
+  align-items: center;
   position: relative;
   width: 60px;
 }
-
+.box-container .box-info {
+  width: 100px;
+  margin-left: 10px;
+}
 .box-circle svg {
   width: 60px;
   height: 60px;
@@ -81,4 +93,41 @@
 .box .number h2 {
   font-size: 16px;
   color: #14ff00;
+}
+
+.description__sinopse {
+  margin: 25px 0;
+  width: 80%;
+  max-width: 1200px;
+}
+
+.description__sinopse h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.description__sinopse p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #dddddd;
+}
+
+.description__crew {
+  width: 80%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 25px;
+}
+
+.description__crew-person h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.description__crew-person p {
+  font-size: 14px;
 }
