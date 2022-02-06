@@ -5,9 +5,9 @@
   background-color: #5c16c5;
 }
 .navbar-container a img {
-  height: 40%;
+  height: 80%;
   margin-left: 70px;
-  width: 50%;
+  width: 80%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -16,6 +16,7 @@
   }
   .navbar-container a img {
     margin-left: 0;
+    width: 100%;
   }
   .navbar-container a {
     display: flex;
