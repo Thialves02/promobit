@@ -21,6 +21,7 @@ export default function Recomendacoes() {
         {recomendacao &&
           recomendacao.map((recomendation, index) => (
             <Filme
+              key={index}
               imagem={recomendation.poster_path}
               titulo={recomendation.title}
               data={recomendation.release_date}

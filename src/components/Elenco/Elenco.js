@@ -20,7 +20,7 @@ export default function Elenco() {
       <div className="cast">
         {cast &&
           cast.map((person, index) => (
-            <div className="cast-person">
+            <div className="cast-person" key={index}>
               <img
                 src={`https://image.tmdb.org/t/p/w300${person.profile_path}`}
               />

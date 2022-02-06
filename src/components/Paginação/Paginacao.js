@@ -3,7 +3,7 @@ import "./Paginacao.css";
 import { Context } from "../../context/CtxApp";
 
 export default function Paginacao() {
-  const { pagina, setPagina, filmesFiltrados, filmes } = useContext(Context);
+  const { setPagina, filmesFiltrados } = useContext(Context);
   const [margin, setMargin] = useState(0);
   const [paginas, setPaginas] = useState(1);
 
@@ -62,7 +62,9 @@ export default function Paginacao() {
       <div className="paginacao-container__paginas">
         <div className="paginas-container" style={{ marginLeft: margin }}>
           {pages.map((page, index) => (
-            <p onClick={() => newPage(index + 1)}>{page.page}</p>
+            <p onClick={() => newPage(index + 1)} key={index}>
+              {page.page}
+            </p>
           ))}
         </div>
       </div>

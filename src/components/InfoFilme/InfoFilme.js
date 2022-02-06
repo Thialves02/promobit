@@ -70,7 +70,9 @@ export default function InfoFilme() {
               <span></span>
               <div className="description__types">
                 {filme.genres != undefined &&
-                  filme.genres.map((filme, index) => <p>{filme.name}</p>)}
+                  filme.genres.map((filme, index) => (
+                    <p key={index}>{filme.name}</p>
+                  ))}
               </div>
               <p>{finalTime}</p>
             </div>
@@ -79,15 +81,17 @@ export default function InfoFilme() {
                 <div className="box-circle">
                   <svg>
                     <circle cx="25" cy="25" r="25"></circle>
-                    <circle
-                      cx="25"
-                      cy="25"
-                      r="25"
-                      style={{
-                        strokeDashoffset: calcNota,
-                        stroke: "#14ff00",
-                      }}
-                    ></circle>
+                    {calcNota && (
+                      <circle
+                        cx="25"
+                        cy="25"
+                        r="25"
+                        style={{
+                          strokeDashoffset: calcNota,
+                          stroke: "#14ff00",
+                        }}
+                      ></circle>
+                    )}
                   </svg>
                 </div>
                 <div className="number">
@@ -103,7 +107,7 @@ export default function InfoFilme() {
             <div className="description__crew">
               {crew &&
                 crew.map((person, index) => (
-                  <div className="description__crew-person">
+                  <div className="description__crew-person" key={index}>
                     <h2>{person.name}</h2>
                     <p>{person.job}</p>
                   </div>

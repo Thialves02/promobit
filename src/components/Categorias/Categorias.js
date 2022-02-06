@@ -25,11 +25,7 @@ export default function Categorias() {
       <p>FILTRE POR:</p>
       <div className="categoria-container">
         {categorias.map((categoria, index) => (
-          <Categoria
-            index={index}
-            categoria={categoria.name}
-            id={categoria.id}
-          />
+          <Categoria key={index} categoria={categoria.name} id={categoria.id} />
         ))}
       </div>
     </div>
