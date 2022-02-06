@@ -1,42 +1,49 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/CtxApp";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Categoria.css";
 
 export default function Categoria({ categoria, index, id }) {
-  const { filmes, setFilmes, filmesFiltrados, setFilmesFiltrados } =
+  const { setFilmes, filmesFiltrados, setFilmesFiltrados, pagina } =
     useContext(Context);
   const [active, setActive] = useState(false);
-  let filtro = JSON.parse(localStorage.getItem("filtro")) || [];
 
   const filtrarGeneros = () => {
-    const filtrar = () => {
-      const index = filtro.indexOf(id);
-      if (index != -1) {
-        filtro.splice(index, 1);
-        setActive(!active);
-      } else {
-        filtro.push(id);
-        setActive(!active);
-      }
-      localStorage.setItem("filtro", JSON.stringify(filtro));
-
-      setFilmesFiltrados(JSON.parse(localStorage.getItem("filtro")));
-    };
-    filtrar();
-    const con = JSON.parse(localStorage.getItem("filtro"));
-    const carregarFilmes = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=83a924a233a6fae4e8bb3ece72e1dcd0&with_genres=${con}`
-      );
-      const body = await response.json();
-      setFilmes(body.results);
-    };
-    carregarFilmes();
-    //USAR LOCALSTORAGE
-    //INVALID TIME
+    const index = filmesFiltrados.indexOf(id);
+    if (index != -1) {
+      let copyArray = [...filmesFiltrados];
+      copyArray.splice(index, 1);
+      setFilmesFiltrados(copyArray);
+      setActive(!active);
+    } else {
+      setFilmesFiltrados([...filmesFiltrados, id]);
+      setActive(!active);
+    }
   };
+
+  useEffect(() => {
+    if (filmesFiltrados.length > 0) {
+      const carregarFilmes = async () => {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/discover/movie?api_key=83a924a233a6fae4e8bb3ece72e1dcd0&with_genres=${filmesFiltrados}&language=pt-BR`
+        );
+        const body = await response.json();
+        setFilmes(body);
+      };
+      carregarFilmes();
+    } else {
+      const API_KEY = "83a924a233a6fae4e8bb3ece72e1dcd0";
+      const load = async () => {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=${pagina}`
+        );
+        const body = await response.json();
+        setFilmes(body);
+      };
+      load();
+    }
+  }, [filmesFiltrados]);
 
   return (
     <div
