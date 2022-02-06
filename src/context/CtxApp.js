@@ -14,7 +14,6 @@ export default function CtxApp({ children }) {
   const [recomedation, setRecomendation] = useState([]);
   const [refresh, setRefresh] = useState(false);
 
-  const [a, aA] = useState([]);
   return (
     <Context.Provider
       value={{
@@ -24,8 +23,6 @@ export default function CtxApp({ children }) {
         setFilmes,
         filmesFiltrados,
         setFilmesFiltrados,
-        a,
-        aA,
         filme,
         setFilme,
         certificationAPI,
