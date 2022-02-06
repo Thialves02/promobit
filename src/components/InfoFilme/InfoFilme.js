@@ -66,14 +66,12 @@ export default function InfoFilme() {
             <h1>{filme.title}</h1>
             <div className="description__infos">
               <p>{etaria} anos </p>
-              <span>•</span>
               <p>{dataFormatada}(BR)</p>
-              <span>•</span>
+              <span></span>
               <div className="description__types">
                 {filme.genres != undefined &&
                   filme.genres.map((filme, index) => <p>{filme.name}</p>)}
               </div>
-              <span>•</span>
               <p>{finalTime}</p>
             </div>
             <div className="box-container">

@@ -27,6 +27,15 @@
   margin: 0 5px;
 }
 
+.description__infos p:after {
+  margin-left: 10px;
+  content: "•";
+}
+
+.description__infos p:last-child:after {
+  content: "";
+}
+
 .description__types {
   display: flex;
 }
@@ -34,10 +43,10 @@
   margin-left: 5px;
 }
 .description__infos .description__types p:after {
-  content: " ,";
+  content: ",";
 }
 .description__infos .description__types p:last-child:after {
-  content: "";
+  content: "•";
 }
 
 .description__infos p:first-child {
@@ -166,5 +175,17 @@
   .description__crew {
     width: 95%;
     margin-top: 50px;
+  }
+  .description__infos p:after {
+    content: "";
+  }
+  .description__infos .description__types p:first-child {
+    margin-left: 0;
+  }
+  .description__infos .description__types p:last-child:after {
+    content: "";
+  }
+  .description__infos p {
+    margin: 3px 0;
   }
 }
