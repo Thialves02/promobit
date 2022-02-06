@@ -8,26 +8,27 @@ export default function Recomendacoes() {
   const { recomedation } = useContext(Context);
 
   useEffect(() => {
-    if (recomedation != undefined) {
+    (async () => {
       const newRecomendation = recomedation.slice(0, 6);
       setRecomendacao(newRecomendation);
-    }
+    })();
   }, [recomedation]);
 
   return (
     <div className="recomendacoes-container">
       <h1>Recomendações</h1>
       <div className="recomendacoes">
-        {recomendacao &&
-          recomendacao.map((recomendation, index) => (
-            <Filme
-              key={index}
-              imagem={recomendation.poster_path}
-              titulo={recomendation.title}
-              data={recomendation.release_date}
-              id={recomendation.id}
-            />
-          ))}
+        {recomendacao.length >= 1
+          ? recomendacao.map((recomendation, index) => (
+              <Filme
+                key={index}
+                imagem={recomendation.poster_path}
+                titulo={recomendation.title}
+                data={recomendation.release_date}
+                id={recomendation.id}
+              />
+            ))
+          : "Recomendações não disponíveis"}
       </div>
     </div>
   );

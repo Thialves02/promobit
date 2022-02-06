@@ -12,23 +12,19 @@ export default function InfoFilme() {
   const [crew, setCrew] = useState(undefined);
 
   useEffect(() => {
-    const voteAverage = () => {
-      if (filme.vote_average != undefined) {
-        const getVote = String(filme.vote_average);
-        const formatVote = getVote.replace(/[.]/g, "");
-        setNota(formatVote);
-      }
-    };
-    if (credits.length != 0) {
+    (async () => {
+      const getVote = String(filme.vote_average);
+      const formatVote = getVote.replace(/[.]/g, "");
+      setNota(formatVote);
+
       const creditsArray = credits.crew;
       const newCredits = creditsArray.slice(0, 6);
       setCrew(newCredits);
-    }
-    if (certificationAPI != undefined) {
-      certificationAPI.map((a, index) => {
-        if (a.iso_3166_1 === "BR") {
-          const firstDate = parseISO(a.release_dates[0].release_date);
-          const firstEtaria = a.release_dates[0].certification;
+
+      certificationAPI.map((movie, index) => {
+        if (movie.iso_3166_1 == "BR") {
+          const firstDate = parseISO(movie.release_dates[0].release_date);
+          const firstEtaria = movie.release_dates[0].certification;
           const formattedDate = format(firstDate, "' 'dd'/'MM'/'yyyy' '", {
             locale: ptBR,
           });
@@ -36,8 +32,7 @@ export default function InfoFilme() {
           setEtaria(firstEtaria);
         }
       });
-    }
-    voteAverage();
+    })();
   }, [filme.vote_average, credits, certificationAPI]);
 
   const calcNota = 157 - (157 * nota) / 100;
@@ -65,7 +60,15 @@ export default function InfoFilme() {
           <div className="VerFilme-description">
             <h1>{filme.title}</h1>
             <div className="description__infos">
-              <p>{etaria} anos </p>
+              {etaria ? (
+                etaria === "L" ? (
+                  <p>Livre</p>
+                ) : (
+                  <p>{etaria} anos </p>
+                )
+              ) : (
+                <p>Faixa etária não informada </p>
+              )}
               <p>{dataFormatada}(BR)</p>
               <span></span>
               <div className="description__types">

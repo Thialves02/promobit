@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import "./Filme.css";
 import { parseISO, format } from "date-fns";
 
@@ -8,6 +8,7 @@ import { Context } from "../../context/CtxApp";
 
 export default function Filme({ imagem, titulo, data, id }) {
   const { refresh, setRefresh } = useContext(Context);
+
   const firstDate = parseISO(data);
   const formattedDate = format(firstDate, "' ' dd ' ' MMM' ' yyyy' '", {
     locale: ptBR,

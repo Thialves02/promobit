@@ -8,7 +8,7 @@ export default function Trailer() {
   return (
     <div className="trailer-container">
       <h1>Trailer</h1>
-      {trailer.length >= 1 && (
+      {trailer.length >= 1 ? (
         <iframe
           src={`https://www.youtube.com/embed/${trailer[0].key}`}
           title="YouTube video player"
@@ -16,6 +16,8 @@ export default function Trailer() {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
+      ) : (
+        "Trailer não disponível"
       )}
     </div>
   );
