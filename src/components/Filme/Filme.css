@@ -7,6 +7,10 @@ a .filme-container {
   margin: 10px;
   cursor: pointer;
 }
+
+.filme-container:nth-child(1) {
+  margin-left: 0;
+}
 .filme-container img {
   border-radius: 5px;
   height: 275px;
@@ -22,4 +26,17 @@ a .filme-container {
   font-size: 14px;
   color: #646464;
   text-transform: uppercase;
+}
+
+@media only screen and (max-width: 600px) {
+  .filme-container {
+    width: 145px;
+    margin: 10px;
+    cursor: pointer;
+    margin: 20px;
+  }
+  .filme-container img {
+    border-radius: 5px;
+    height: 225px;
+  }
 }
