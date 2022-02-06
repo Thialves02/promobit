@@ -131,3 +131,40 @@
 .description__crew-person p {
   font-size: 14px;
 }
+
+@media only screen and (max-width: 1200px) {
+  .VerFilme-container__infos {
+    height: auto;
+    flex-direction: column;
+    padding: 50px 0;
+    align-items: center;
+  }
+  .VerFilme-container__infos img {
+    margin-bottom: 50px;
+  }
+  .description__infos {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+  }
+  .box-container {
+    margin: 25px 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .VerFilme-container__infos img {
+    height: 350px;
+    width: 250px;
+  }
+  .VerFilme-description {
+    margin-left: 20px;
+  }
+  .description__types {
+    flex-wrap: wrap;
+  }
+  .description__crew {
+    width: 95%;
+    margin-top: 50px;
+  }
+}

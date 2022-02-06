@@ -1,7 +1,6 @@
 .recomendacoes-container {
   background-color: #dddd;
   padding: 0 75px 100px;
-  text-decoration: none;
 }
 
 .recomendacoes-container h1 {
@@ -18,4 +17,10 @@
 
 .recomendacoes a {
   text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .recomendacoes-container {
+    padding: 0 20px 100px;
+  }
 }
