@@ -12,5 +12,6 @@
 @media only screen and (max-width: 600px) {
   .filmes-container {
     justify-content: center;
+    margin: 30px 20px;
   }
 }
