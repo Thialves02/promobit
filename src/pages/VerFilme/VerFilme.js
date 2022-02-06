@@ -47,7 +47,6 @@ export default function VerFilme(props) {
       setCredits(bodyCredits);
       setTrailer(bodyTrailer.results);
       setRecomendation(bodyRecomendations.results);
-      console.log(bodyRecomendations.results);
     };
 
     load();

@@ -10,7 +10,7 @@ export default function InfoFilme() {
   const [etaria, setEtaria] = useState();
   const [nota, setNota] = useState();
   const [crew, setCrew] = useState(undefined);
-  console.log(certificationAPI);
+
   useEffect(() => {
     const voteAverage = () => {
       if (filme.vote_average != undefined) {

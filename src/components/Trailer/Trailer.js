@@ -10,8 +10,6 @@ export default function Trailer() {
       <h1>Trailer</h1>
       {trailer.length >= 1 && (
         <iframe
-          width="900"
-          height="500"
           src={`https://www.youtube.com/embed/${trailer[0].key}`}
           title="YouTube video player"
           frameborder="0"

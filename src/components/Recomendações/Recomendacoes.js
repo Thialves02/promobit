@@ -14,7 +14,6 @@ export default function Recomendacoes() {
     }
   }, [recomedation]);
 
-  console.log(recomendacao);
   return (
     <div className="recomendacoes-container">
       <h1>Recomendações</h1>
