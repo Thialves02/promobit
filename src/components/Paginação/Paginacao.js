@@ -7,6 +7,7 @@ export default function Paginacao() {
   const [margin, setMargin] = useState(0);
   const [paginas, setPaginas] = useState(1);
 
+  //Array local para definir a quantidade de páginas
   const pages = [
     { page: 1 },
     { page: 2 },
@@ -46,9 +47,9 @@ export default function Paginacao() {
   const total = Math.ceil(pages.length / 5);
 
   return (
-    <div
+    <footer
       className={
-        filmesFiltrados.length == 0
+        filmesFiltrados.length === 0
           ? "paginacao-container"
           : "paginacao-container__hidden"
       }
@@ -75,6 +76,6 @@ export default function Paginacao() {
         {">"}
       </p>
       <p onClick={() => lastPage()}> Última </p>
-    </div>
+    </footer>
   );
 }

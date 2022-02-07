@@ -1,25 +1,29 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../../context/CtxApp";
 import Filme from "../Filme/Filme";
 import "./Filmes.css";
 
 export default function Filmes() {
-  const { pagina, filmes, setFilmes } = useContext(Context);
+  const { pagina, filmes, setFilmes, API_KEY } = useContext(Context);
 
-  useEffect(() => {
-    const API_KEY = "83a924a233a6fae4e8bb3ece72e1dcd0";
-    const load = async () => {
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=${pagina}`
-      );
-      const body = await response.json();
-      setFilmes(body);
-    };
-    load();
-  }, [pagina]);
+  //useEffect para renderizar os filmes populares, com a opção de alterar a página
+  useEffect(
+    () => {
+      const load = async () => {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=pt-BR&page=${pagina}`
+        );
+        const body = await response.json();
+        setFilmes(body);
+      };
+      load();
+    },
+    //useEffect irá executar novamente se a variavel for alterada
+    [pagina]
+  );
 
   return (
-    <div className="filmes-container">
+    <section className="filmes-container">
       {filmes.results !== undefined &&
         filmes.results.map((filme, index) => (
           <Filme
@@ -30,6 +34,6 @@ export default function Filmes() {
             id={filme.id}
           />
         ))}
-    </div>
+    </section>
   );
 }

@@ -6,10 +6,10 @@ import "./Home.css";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Categorias />
       <Filmes />
       <Paginacao />
-    </div>
+    </>
   );
 }

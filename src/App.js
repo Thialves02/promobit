@@ -7,17 +7,19 @@ import VerFilme from "./pages/VerFilme/VerFilme";
 
 function App() {
   return (
-    <div>
+    <>
       <CtxApp>
         <Router>
           <Navbar />
-          <Switch>
-            <Route path="/" exact={true} component={Home} />
-            <Route path="/filme/:id" exact={true} component={VerFilme} />
-          </Switch>
+          <main>
+            <Switch>
+              <Route path="/" exact={true} component={Home} />
+              <Route path="/filme/:id" exact={true} component={VerFilme} />
+            </Switch>
+          </main>
         </Router>
       </CtxApp>
-    </div>
+    </>
   );
 }
 

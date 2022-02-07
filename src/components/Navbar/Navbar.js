@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
     <header className="navbar-container">
-      <Link to="/">
-        <img src={logo} />
-      </Link>
+      <nav>
+        <Link to="/">
+          <img src={logo} alt="LOGO" />
+        </Link>
+      </nav>
     </header>
   );
 }

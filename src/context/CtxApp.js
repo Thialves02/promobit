@@ -13,6 +13,7 @@ export default function CtxApp({ children }) {
   const [trailer, setTrailer] = useState([]);
   const [recomedation, setRecomendation] = useState([]);
   const [refresh, setRefresh] = useState(false);
+  const [API_KEY] = useState("83a924a233a6fae4e8bb3ece72e1dcd0");
 
   return (
     <Context.Provider
@@ -35,6 +36,7 @@ export default function CtxApp({ children }) {
         setRecomendation,
         refresh,
         setRefresh,
+        API_KEY,
       }}
     >
       {children}

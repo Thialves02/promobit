@@ -11,32 +11,43 @@ export default function InfoFilme() {
   const [nota, setNota] = useState();
   const [crew, setCrew] = useState(undefined);
 
-  useEffect(() => {
-    (async () => {
-      const getVote = String(filme.vote_average);
-      const formatVote = getVote.replace(/[.]/g, "");
-      setNota(formatVote);
+  useEffect(
+    () => {
+      (async () => {
+        //Nota é formatada, sendo transformada em string e retirando o "."
+        const getVote = String(filme.vote_average);
+        const formatVote = getVote.replace(/[.]/g, "");
+        setNota(formatVote);
 
-      const creditsArray = credits.crew;
-      const newCredits = creditsArray.slice(0, 6);
-      setCrew(newCredits);
+        //Crew é formatado, retornando apenas 6 pessoas da equipe técnica
+        const creditsArray = credits.crew;
+        const newCredits = creditsArray.slice(0, 6);
+        setCrew(newCredits);
 
-      certificationAPI.map((movie, index) => {
-        if (movie.iso_3166_1 == "BR") {
-          const firstDate = parseISO(movie.release_dates[0].release_date);
-          const firstEtaria = movie.release_dates[0].certification;
-          const formattedDate = format(firstDate, "' 'dd'/'MM'/'yyyy' '", {
-            locale: ptBR,
-          });
-          setDataFormatada(formattedDate);
-          setEtaria(firstEtaria);
-        }
-      });
-    })();
-  }, [filme.vote_average, credits, certificationAPI]);
+        //Faixa etária e data formatada, recebendo apenas informações do Brasil
+        certificationAPI.map((movie, index) => {
+          if (movie.iso_3166_1 === "BR") {
+            const firstDate = parseISO(movie.release_dates[0].release_date);
+            const formattedDate = format(firstDate, "' 'dd'/'MM'/'yyyy' '", {
+              locale: ptBR,
+            });
 
+            const firstEtaria = movie.release_dates[0].certification;
+
+            setDataFormatada(formattedDate);
+            setEtaria(firstEtaria);
+          }
+        });
+      })();
+    },
+    //useEffect irá executar novamente se a variavel for alterada
+    [filme.vote_average, credits, certificationAPI]
+  );
+
+  //Calculo para o preenchimento do circulo de progresso da nota do filme
   const calcNota = 157 - (157 * nota) / 100;
 
+  //Calculo para formatar e exibir a duração do filme em horas e minutos
   var time = filme.runtime;
   var minutes = Math.floor(time / 60);
   var seconds = time - minutes * 60;
@@ -45,7 +56,6 @@ export default function InfoFilme() {
   function str_pad_left(string, pad, length) {
     return (new Array(length + 1).join(pad) + string).slice(-length);
   }
-
   const finalTime =
     str_pad_left(minutes, "0", 2) + "h " + str_pad_left(seconds, "0", 2) + "m";
 
@@ -72,7 +82,7 @@ export default function InfoFilme() {
               <p>{dataFormatada}(BR)</p>
               <span></span>
               <div className="description__types">
-                {filme.genres != undefined &&
+                {filme.genres !== undefined &&
                   filme.genres.map((filme, index) => (
                     <p key={index}>{filme.name}</p>
                   ))}

@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Context } from "../../context/CtxApp";
 import Categoria from "../Categoria/Categoria";
 import "./Categorias.css";
 
 export default function Categorias() {
+  const { API_KEY } = useContext(Context);
   const [categorias, setCategorias] = useState([]);
-  const API_KEY = "83a924a233a6fae4e8bb3ece72e1dcd0";
+
+  //Carrega todos os gêneros de filmes disponíveis
   useEffect(() => {
     const load = async () => {
       const response = await fetch(
@@ -17,7 +20,7 @@ export default function Categorias() {
   }, []);
 
   return (
-    <div className="categorias-container">
+    <section className="categorias-container">
       <h1>
         Milhões de filmes, séries e pessoas <br></br> para descobrir. Explore
         já.
@@ -28,6 +31,6 @@ export default function Categorias() {
           <Categoria key={index} categoria={categoria.name} id={categoria.id} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
