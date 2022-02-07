@@ -8,5 +8,9 @@
 }
 
 :root {
-  --main-bg-color: brown;
+  --white: #fff;
+  --genres-bg: #2d0c5e;
+  --movie-bg: #e5e5e5;
+  --text-color: #131313;
+  --date-color: #646464;
 }

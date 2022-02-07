@@ -20,7 +20,7 @@
   width: 200px;
 }
 .paginacao-container p {
-  color: #5c16c5;
+  color: var(--genres-color);
   margin: 0 10px;
   font-weight: bold;
   cursor: pointer;

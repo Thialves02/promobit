@@ -1,16 +1,16 @@
 .categorias-container {
-  background-color: #2d0c5e;
+  background-color: var(--genres-bg);
 }
 
 .categorias-container h1 {
-  color: #fff;
+  color: var(--white);
   font-family: 48px;
   text-align: center;
   padding: 100px 0 50px;
 }
 .categorias-container p {
   text-align: center;
-  color: #fff;
+  color: var(--white);
 }
 
 @media only screen and (max-width: 600px) {

@@ -19,11 +19,12 @@
   margin: 12px;
 }
 .categoria-button button {
-  background-color: #fff;
+  background-color: var(--white);
+  color: var(--text-color);
 }
 .categoria-button__active button {
   background-color: #d18000;
-  color: #fff;
+  color: var(--white);
 }
 
 .categoria-button .categoria-button__icon {

@@ -19,12 +19,12 @@ a .filme-container {
 .filme-container h2 {
   font-size: 16px;
   margin: 5px 0;
-  color: black;
+  color: var(--text-color);
 }
 
 .filme-container h3 {
   font-size: 14px;
-  color: #646464;
+  color: var(--date-color);
   text-transform: uppercase;
 }
 
